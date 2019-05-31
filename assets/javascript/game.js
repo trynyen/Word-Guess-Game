@@ -98,13 +98,13 @@ function evaluateGuess(letter) {
 
 function updateDisplay() {
 
-    document.getElementById("totalWins").innerText = wins;
-    document.getElementById("currentWord").innerText = "";
+    document.getElementById("totalWins").textContent = wins;
+    document.getElementById("currentWord").textContent = "";
     for (var i = 0; i < guessingWord.length; i++) {
-        document.getElementById("currentWord").innerText += guessingWord[i];
+        document.getElementById("currentWord").textContent += guessingWord[i];
     }
-    document.getElementById("remainingGuesses").innerText = remainingGuesses;
-    document.getElementById("guessedLetters").innerText = guessedLetters;
+    document.getElementById("remainingGuesses").textContent = remainingGuesses;
+    document.getElementById("guessedLetters").textContent = guessedLetters;
     if(remainingGuesses <= 0) {
         document.getElementById("gameover-image").style.cssText = "display: block";
         document.getElementById("pressKeyTryAgain").style.cssText = "display:block";
