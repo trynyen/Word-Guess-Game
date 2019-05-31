@@ -1,7 +1,7 @@
 var selectableWords = ["annabelle","insidious","theconjuring",
 "thering","thegrudge","thenun","theexorcist","paranormalactivity"];
 
-const maxTries = 10;            // Maximum number of tries player has
+var maxTries = 5;            // Maximum number of tries player has
 
 var guessedLetters = [];        // Stores the letters the user guessed
 var currentWordIndex;           // Index of the current word in the array
@@ -30,6 +30,8 @@ function resetGame() {
     remainingGuesses = maxTries;
     gameStarted = false;
 
+    document.getElementById("start").style.cssText = "display: block";
+
     // Use Math.floor to round the random number down to the nearest whole.
     currentWordIndex = Math.floor(Math.random() * (selectableWords.length));
 
@@ -37,20 +39,16 @@ function resetGame() {
     guessedLetters = [];
     guessingWord = [];
 
-    // Make sure the hangman image is cleared
-    document.getElementById("hangmanImage").src = "";
-
     // Build the guessing word and clear it out
     for (var i = 0; i < selectableWords[currentWordIndex].length; i++) {
-        if(guessingWord[i] === " ") {
-            alert("HERE");
-        }
         guessingWord.push("_");
     }
     // Hide game over and win images/text
-    document.getElementById("pressKeyTryAgain").style.cssText= "display: none";
-    document.getElementById("gameover-image").style.cssText = "display: none";
-    document.getElementById("youwin-image").style.cssText = "display: none";
+    document.getElementById("hangmanImage").style.cssText= "display: none";
+    document.getElementById("gameover").style.cssText = "display: none";
+    document.getElementById("winner").style.cssText = "display: none";
+    document.getElementById("ghost2").style.cssText = "display: none";
+    document.getElementById("ghost3").style.cssText = "display: none";
 
     // Show display
     updateDisplay();
@@ -105,23 +103,34 @@ function updateDisplay() {
     }
     document.getElementById("remainingGuesses").textContent = remainingGuesses;
     document.getElementById("guessedLetters").textContent = guessedLetters;
-    if(remainingGuesses <= 0) {
-        document.getElementById("gameover-image").style.cssText = "display: block";
-        document.getElementById("pressKeyTryAgain").style.cssText = "display:block";
+
+    if(remainingGuesses = 3) {
+        document.getElementById("ghost2").style.cssText = "display: block";
+        document.getElementById("start").style.cssText = "display: none";
+        hasFinished = false;
+    }
+    else if(remainingGuesses = 1) {
+        document.getElementById("ghost1").style.cssText = "display: block";
+        document.getElementById("ghost2").style.cssText = "display: none";
+        hasFinished = false;
+    }
+    else if(remainingGuesses <= 0) {
+        document.getElementById("gameover").style.cssText = "display: block";
+        document.getElementById("start").style.cssText = "display: none";
         hasFinished = true;
     }
 };
 
 function checkWin() {
     if(guessingWord.indexOf("_") === -1) {
-        document.getElementById("youwin-image").style.cssText = "display: block";
-        document.getElementById("pressKeyTryAgain").style.cssText= "display: block";
+        document.getElementById("winner").style.cssText = "display: block";
+        document.getElementById("start").style.cssText = "display: none";
         wins++;
         hasFinished = true;
     }
 };
 
 function updateHangmanImage() {
-    document.getElementById("hangmanImage").src = "assets/images/" + (maxTries - remainingGuesses) + ".png";
+    document.getElementById("hangmanImage").src = "../images/ghost1" + (maxTries - remainingGuesses) + ".png";
 };
 
