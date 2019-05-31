@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WordGuess</title>
+    <link rel="stylesheet" href="assets/css/style.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="assets/javascript/game.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="container">
+        <img id="logo" src="assets/images/logo.png" alt="Word Guess Logo" />
+        <div class="row">
+            <div class="col-md-6 gameplay-column">
+                <img id="youwin-image" src="assets/images/light.jpg" alt="Winning Image" />
+                <img id="gameover-image" src="assets/images/#.gif" alt="Game Over Image"/>
+                <img id="pressKeyTryAgain" src="assets/images/#.jpg" alt="Ghost awakening"/>
+                <img id="hangmanImage" src="assets/images/#.png" alt="Ghost standing"/>
+                <img id="ghost2" src="assets/images/#.jpg" alt="Ghost moving"/>
+                <img id="ghost3" src="assets/images/#.jpg" alt="Ghost getting closer"/>
+            </div>
+            <div class="col-md-6 gameplay-column">
+                <h2>GUESS A HORROR MOVIE</h2>
+                <h2>Press Any Key to Get Started!</h2>
+                <h4>Wins</h4>
+                <h5 id="totalWins"></h5>
+                <h4>Current Word</h4>
+                <h3 id="currentWord"></h3>
+                <h4>NUMBER OF GUESSES REMAINING</h4>
+                <h6 id="remainingGuesses"></h6>
+                <h4>Letters Guessed</h4>
+                <h3 id="guessedLetters"></h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        resetGame();
+        updateDisplay();
+    </script>
+   
+</body>
+
+</html>
